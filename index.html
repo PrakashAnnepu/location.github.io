@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>
+        PRAAKRITHIK VINIMAI
+    </title>
+      
+    <!-- Add Google map API source -->
+    <script src=
+    "https://maps.googleapis.com/maps/api/js?key=AIzaSyB3fIfIY6YHlyQZ6Bo5RQwed1WYaxXKOIg">
+</script>
+  
+    <script>
+        function gL() {
+            if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(GFG);
+                }
+    }
+       
+        function GFG(pos) {
+            var x=document.getElementById("demo");
+            var CustomOp = {
+                center: new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude),
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            };
+            
+            
+            // Map object
+            var map = new google.maps.Map(
+                document.getElementById("DivID"),
+                CustomOp
+            );
+            var place={lat:pos.coords.latitude,lng:pos.coords.longitude}
+            var mk1 = new google.maps.Marker({position: place, map: map});
+            x.innerHTML=("latitude="+pos.coords.latitude+"<br>"+"longitude="+pos.coords.longitude)
+        }
+       
+    </script>
+</head>
+  
+<!-- Function that execute when page load -->
+<body>
+    <center>
+        <P>PLEASE SHARE YOUR LOCATION</P>
+        <button onclick="gL()" onclick="GFG()">share</button>
+
+        <h1 style="color:green">
+            PRAAKRITHIK VINIMAI
+        </h1>
+        
+        <h3>Google Maps</h3>
+          
+        <!-- Basic Container -->
+        <div id="DivID" 
+            style="width:400px; height:300px;">
+        </div>
+        <p id="demo"></p>
+       
+    </center>
+</body>
+  
+</html>
